@@ -1,13 +1,19 @@
 package com.firuze.ahmad.demo
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.firuze.ahmad.demo1.R
+import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        var btnWebview = findViewById<Button>(R.id.btnWebview)
+        btnWebview.setOnClickListener { var i = Intent(this,WebviewActivity::class.java)
+            startActivity(i)
+        }
     }
 }
