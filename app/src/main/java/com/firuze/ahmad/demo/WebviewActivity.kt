@@ -8,13 +8,13 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_webview.*
+import kotlinx.android.synthetic.main.a_webview.*
 
 class WebviewActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_webview)
+        setContentView(R.layout.a_webview)
 
         val context = this
         webview.webViewClient = MyWebViewClient()
