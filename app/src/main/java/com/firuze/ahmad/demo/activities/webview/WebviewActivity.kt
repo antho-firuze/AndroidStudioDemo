@@ -1,4 +1,4 @@
-package com.firuze.ahmad.demo
+package com.firuze.ahmad.demo.activities.webview
 
 import android.net.http.SslError
 import android.support.v7.app.AppCompatActivity
@@ -8,6 +8,7 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
+import com.firuze.ahmad.demo.R
 import kotlinx.android.synthetic.main.a_webview.*
 
 class WebviewActivity : AppCompatActivity() {
