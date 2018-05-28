@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.firuze.ahmad.demo.activities.webview.WebviewActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         var btnWebview = findViewById<Button>(R.id.btnWebview)
         btnWebview.setOnClickListener {
-            var i = Intent(this,WebviewActivity::class.java)
+            var i = Intent(this, WebviewActivity::class.java)
             startActivity(i)
         }
 
