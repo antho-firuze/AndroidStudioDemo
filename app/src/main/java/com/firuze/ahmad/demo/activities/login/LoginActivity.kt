@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.util.Patterns
 import android.view.View
+import android.widget.Toast
 import com.firuze.ahmad.demo.MyConfig
 import com.firuze.ahmad.demo.MyPreference
 import com.firuze.ahmad.demo.R
@@ -35,16 +36,19 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 //        btn_login.setOnClickListener(this)
         btn_login.setOnClickListener{
             Fuel.post(MyConfig.URL_LOGIN).authenticate(txt_username.text.toString(), txt_pass.text.toString()).responseJson { _, response, result ->
-
                 result.success { json ->
-                    Log.d(TAG, "Got response $json")
-                    val code: String = json.obj().getString("code")
-                    if (code == "200") {
-//                        success = true
+//                    Log.d(TAG, "RESPONSE: ${json?.array()}")
+                    val status: Boolean = json.obj().getBoolean("status")
+                    if (status) {
+                        Toast.makeText(this, json.obj().getString("message"), Toast.LENGTH_LONG).show()
+                    } else {
+                        Log.d(TAG, "RESPONSE: FALSE [${json.obj().getString("message")}]")
+                        Toast.makeText(this, json.obj().getString("message"), Toast.LENGTH_LONG).show()
                     }
                 }
                 result.failure {
                     Log.d(TAG, "FAILURE : $result")
+                    Toast.makeText(this, response.responseMessage, Toast.LENGTH_LONG).show()
                 }
 
 //                val (data, error) = result
