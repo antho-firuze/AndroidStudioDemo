@@ -4,32 +4,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.firuze.ahmad.demo.MainActivity">
 
-    <Button
-        android:id="@+id/btnFragment"
-        android:layout_width="180dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/buttonshape"
-        android:text="@string/Fragment"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        android:layout_margin="5dp"/>
+        android:baselineAligned="false"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btnWebview"
-        android:layout_width="180dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:elevation="4dp"
+                android:text="@string/Fragment"
+                android:theme="@style/PrimaryButton" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_webview"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:elevation="4dp"
+                android:text="@string/Webview"
+                android:theme="@style/PrimaryButton" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/buttonshape"
-        android:text="@string/Webview"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        android:layout_margin="5dp"/>
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_recycleview"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:elevation="4dp"
+                android:text="RECYCLE VIEW"
+                android:theme="@style/PrimaryButton" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_other"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:elevation="4dp"
+                android:theme="@style/PrimaryButton" />
+        </LinearLayout>
+
+    </LinearLayout>
 
     <FrameLayout
-        android:id="@+id/fragment_holder"
+        android:id="@+id/fragmentLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
 </LinearLayout>

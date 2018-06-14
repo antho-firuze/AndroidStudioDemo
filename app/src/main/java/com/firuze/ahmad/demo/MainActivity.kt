@@ -1,28 +1,62 @@
 package com.firuze.ahmad.demo
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
+import android.view.View
 import com.firuze.ahmad.demo.activities.webview.WebviewActivity
+import kotlinx.android.synthetic.main.a_main.*
+import org.jetbrains.anko.longToast
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.a_main)
 
+        btn_fragment.setOnClickListener(this)
+        btn_webview.setOnClickListener(this)
+        btn_recycleview.setOnClickListener(this)
 
+    }
 
-        var btnWebview = findViewById<Button>(R.id.btnWebview)
-        btnWebview.setOnClickListener {
-            var i = Intent(this, WebviewActivity::class.java)
-            startActivity(i)
+    override fun onClick(v : View) {
+        when (v.id) {
+            R.id.btn_fragment -> {
+                setContentFragment(R.id.fragmentLayout, FragmentTest())
+            }
+            R.id.btn_webview -> startActivity(Intent(this, WebviewActivity::class.java))
+            R.id.btn_recycleview -> {
+                startActivity(Intent(this, RecycleView::class.java))
+            }
         }
+    }
 
-        var btnFragment = findViewById<Button>(R.id.btnFragment)
-        btnFragment.setOnClickListener {
+    private fun setContentFragment(fragmentLayout: Int, fragment: Fragment?) {
+//        val transaction = supportFragmentManager.beginTransaction()
+//        transaction.replace(fragmentLayout, fragment).addToBackStack(null).commit()
+//        supportFragmentManager.beginTransaction().replace(fragmentLayout, fragment).commit()
+        supportFragmentManager.beginTransaction().replace(android.R.id.content, fragment).commit()
+    }
 
+    override fun onBackPressed() {
+        val myPref = MyPreference(this)
+        val i = myPref.getCount(myPref.PREF_BACKPRESSED_COUNT)+1
+
+        if (i < 2){
+            myPref.setCount(myPref.PREF_BACKPRESSED_COUNT, i)
+            longToast("Tekan sekali lagi untuk keluar !")
+        } else {
+            myPref.setCount(myPref.PREF_BACKPRESSED_COUNT, 0)
+            super.onBackPressed()
+            finish()
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        val myPref = MyPreference(this)
+        myPref.setCount(myPref.PREF_BACKPRESSED_COUNT, 0)
     }
 }
