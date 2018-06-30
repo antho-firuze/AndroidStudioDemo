@@ -25,6 +25,7 @@
         </activity>
         <activity android:name=".activities.webview.WebviewActivity"></activity>
         <activity android:name=".MainActivity" />
+        <activity android:name=".RecycleView" />
     </application>
 
 </manifest>

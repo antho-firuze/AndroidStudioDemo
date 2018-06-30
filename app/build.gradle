@@ -44,5 +44,8 @@ dependencies {
     //for Kotlin Coroutines support
     implementation 'org.jetbrains.anko:anko:0.10.5'
     implementation 'androidx.core:core-ktx:0.3'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'me.zhanghai.android.materialedittext:library:1.0.5'
 }
 

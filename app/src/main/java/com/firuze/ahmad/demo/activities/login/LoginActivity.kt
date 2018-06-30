@@ -20,6 +20,7 @@ import org.jetbrains.anko.longToast
 import org.json.JSONObject
 import java.io.ByteArrayInputStream
 import java.io.InputStreamReader
+import java.util.*
 import java.util.regex.Pattern
 
 /**
@@ -28,6 +29,7 @@ import java.util.regex.Pattern
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private val TAG = "Login"
+    val sRandom = Random()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,21 +48,30 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_login -> {
-                if (!isEmail(txt_username.text.toString())) {
+                if (!isEmail(txt_email.text.toString())) {
                     longToast("Error: Email not recognize !")
                     return
                 }
 
 //                val res : Map<String, Any> = emptyMap()
 //                Executors.newSingleThreadExecutor().execute({
-//                    val params = mapOf("username" to txt_username.text.toString(), "password" to txt_pass.text.toString())
+//                    val params = mapOf("email" to txt_email.text.toString(), "password" to txt_pass.text.toString())
 //                    res = ajaxRequest(params)
 //                })
 
+                val jsonRequest = JSONObject()
                 val jsonParams = JSONObject()
-                jsonParams.put("username", txt_username.text.toString()).put("password", txt_pass.text.toString())
+                jsonParams
+                        .put("email", txt_email.text.toString())
+                        .put("password", txt_pass.text.toString())
+                jsonRequest
+                        .put("jsonrpc", MyConfig.JSONRPC)
+                        .put("agent", MyConfig.AGENT)
+                        .put("method", MyConfig.METHOD_LOGIN)
+                        .put("params", jsonParams)
+                        .put("id", sRandom.nextInt())
 
-                Fuel.post(MyConfig.URL_LOGIN).body(jsonParams.toString()).responseString { req, resp, res ->
+                Fuel.post(MyConfig.URL_READ).body(jsonRequest.toString()).responseString { req, resp, res ->
                     Log.d(TAG, req.cUrlString())
                     when (resp.statusCode) {
                         200 -> {

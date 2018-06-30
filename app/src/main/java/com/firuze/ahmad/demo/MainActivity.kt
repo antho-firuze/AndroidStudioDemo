@@ -2,7 +2,6 @@ package com.firuze.ahmad.demo
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.firuze.ahmad.demo.activities.webview.WebviewActivity
@@ -24,20 +23,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v : View) {
         when (v.id) {
             R.id.btn_fragment -> {
-                setContentFragment(R.id.fragmentLayout, FragmentTest())
+                supportFragmentManager.beginTransaction().replace(android.R.id.content, FragmentTest()).commit()
             }
-            R.id.btn_webview -> startActivity(Intent(this, WebviewActivity::class.java))
+            R.id.btn_webview -> {
+                startActivity(Intent(this, WebviewActivity::class.java))
+            }
             R.id.btn_recycleview -> {
                 startActivity(Intent(this, RecycleView::class.java))
             }
         }
-    }
-
-    private fun setContentFragment(fragmentLayout: Int, fragment: Fragment?) {
-//        val transaction = supportFragmentManager.beginTransaction()
-//        transaction.replace(fragmentLayout, fragment).addToBackStack(null).commit()
-//        supportFragmentManager.beginTransaction().replace(fragmentLayout, fragment).commit()
-        supportFragmentManager.beginTransaction().replace(android.R.id.content, fragment).commit()
     }
 
     override fun onBackPressed() {
