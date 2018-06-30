@@ -1,4 +1,4 @@
-package com.firuze.ahmad.demo
+package com.firuze.ahmad.demo.models
 
 /**
  * Created by antho.firuze@gmail.com on 2018-06-20.

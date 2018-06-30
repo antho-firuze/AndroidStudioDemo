@@ -1,18 +1,20 @@
-package com.firuze.ahmad.demo
+package com.firuze.ahmad.demo.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.firuze.ahmad.demo.activities.webview.WebviewActivity
-import kotlinx.android.synthetic.main.a_main.*
+import com.firuze.ahmad.demo.MyPreference
+import com.firuze.ahmad.demo.R
+import com.firuze.ahmad.demo.fragments.FragmentTest
+import kotlinx.android.synthetic.main.main.*
 import org.jetbrains.anko.longToast
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.a_main)
+        setContentView(R.layout.main)
 
         btn_fragment.setOnClickListener(this)
         btn_webview.setOnClickListener(this)

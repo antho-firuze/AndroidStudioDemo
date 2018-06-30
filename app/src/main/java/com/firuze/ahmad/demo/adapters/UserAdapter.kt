@@ -1,10 +1,12 @@
-package com.firuze.ahmad.demo
+package com.firuze.ahmad.demo.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.firuze.ahmad.demo.R
+import com.firuze.ahmad.demo.models.User
 
 /**
  * Created by antho.firuze@gmail.com on 2018-06-20.

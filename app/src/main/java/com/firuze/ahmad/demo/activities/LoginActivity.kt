@@ -1,4 +1,4 @@
-package com.firuze.ahmad.demo.activities.login
+package com.firuze.ahmad.demo.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,14 +8,13 @@ import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import androidx.core.widget.toast
-import com.firuze.ahmad.demo.MainActivity
 import com.firuze.ahmad.demo.MyConfig
 import com.firuze.ahmad.demo.MyPreference
 import com.firuze.ahmad.demo.R
 import com.github.kittinunf.fuel.Fuel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.a_login.*
+import kotlinx.android.synthetic.main.login.*
 import org.jetbrains.anko.longToast
 import org.json.JSONObject
 import java.io.ByteArrayInputStream
@@ -33,7 +32,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.a_login)
+        setContentView(R.layout.login)
 
 //        FuelManager.instance.baseHeaders =
 //                mapOf(
